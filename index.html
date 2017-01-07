@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A layout example that shows off a responsive email layout.">
+  <title>Drakensberge 2016</title>
+
+  <link rel="stylesheet" href="css/pure-min.css">
+
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.css' rel='stylesheet'/>
+  <style>
+    #map {
+      width: 100%;
+      height: 700px;
+      display: inline-block;
+    }
+
+    #list-container {
+      padding-right: 10px;
+      padding-left: 3px;
+    }
+
+    .pure-button {
+      margin: 0.3rem;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+  </style>
+</head>
+<body>
+
+
+<div id="layout" class="content pure-g">
+
+  <div id="list" class="pure-u-5-24">
+    <div id="list-container">
+
+      <div id="controls">
+
+
+        <h3>Places</h3>
+        <div id='locations'></div>
+        <h3>Hikes</h3>
+        <div id='hikes'></div>
+        <h3>Actions</h3>
+        <div id="actions">
+          <button class="pure-button pure-button-primary" id='play-all'>Play All</button>
+          <button class="pure-button pure-button-primary" id="fit-to-sa">Fit to South Africa</button>
+          <button class="pure-button pure-button-primary" id="drive-to-orania">Drive to Orania</button>
+        </div>
+      </div>
+
+      <div id='mapstyles'>
+        <input id='basic' type='radio' name='rtoggle' value='basic' checked='checked'>
+        <label for='basic'>basic</label>
+        <input id='streets' type='radio' name='rtoggle' value='streets'>
+        <label for='streets'>streets</label>
+        <input id='bright' type='radio' name='rtoggle' value='bright'>
+        <label for='bright'>bright</label>
+        <input id='light' type='radio' name='rtoggle' value='light'>
+        <label for='light'>light</label>
+        <input id='dark' type='radio' name='rtoggle' value='dark'>
+        <label for='dark'>dark</label>
+        <input id='satellite' type='radio' name='rtoggle' value='satellite'>
+        <label for='satellite'>satellite</label>
+        <div style="display: block">
+          <input type="number" name='pitch' step="5" min='0' max='60' id='pitch-control' placeholder="pitch" value="0">
+          <input type='number' name='bearing' step='5' min='0' max='360' id='bearing-control' placeholder="bearing" value="0">
+        </div>
+        <button id='toggle-info' class="pure-button button-xsmall">Toggle Info</button>
+        <button class="pure-button button-xsmall" onclick="toggleBeaconVisibility()">Toggle Beacon</button>
+      </div>
+      <div id='video-controls'>
+        <button id='start-recording' class="pure-button pure-button-primary">Start Recording</button>
+      </div>
+      <div id="rendered-video"></div>
+    </div>
+  </div>
+
+  <div id="main" class="pure-u-19-24">
+    <div style="text-align: center">
+      <h1>Drakensberge 2016</h1>
+      <h3 id="current">...</h3>
+    </div>
+    <div id="map"></div>
+    <div id="info"></div>
+
+  </div>
+</div>
+
+<script src="/js/map.js"></script>
+<script src="/js/beacon.js"></script>
+<script src="/js/actions.js"></script>
+<script src="/js/info.js"></script>
+<script src="/js/controls.js"></script>
+<script src="/js/record.js"></script>
+
+
+</body>
+</html>
